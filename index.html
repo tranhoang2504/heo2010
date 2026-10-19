@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Gửi Bé Heo — 20.10 🌹</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,500;1,400&family=Dancing+Script:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --wine-deep:#17060e;--wine:#3a1220;--wine-light:#5a2333;
+  --rose:#b9174b;--rose-mid:#e4356c;--rose-light:#f8a5c2;--rose-blush:#fce4ec;
+  --cream:#fdf8f3;--cream-warm:#f9f0e6;
+  --gold:#c9a961;--gold-light:#e8d4a0;
+  --text:#2d1420;--text-soft:#6b4a56;
+  --font-display:'Playfair Display',Georgia,serif;
+  --font-body:'Lora',Georgia,serif;
+  --font-script:'Dancing Script',cursive;
+  --font-ui:'Inter',-apple-system,sans-serif;
+  --ease-out:cubic-bezier(0.22,1,0.36,1);
+  --ease-spring:cubic-bezier(0.34,1.56,0.64,1);
+}
+
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:var(--font-body);font-size:16px;color:var(--text);background:var(--cream);overflow-x:hidden;-webkit-font-smoothing:antialiased;line-height:1.7}
+::-webkit-scrollbar{width:0;display:none}
+html{scrollbar-width:none;-ms-overflow-style:none}
+img,svg{display:block;max-width:100%;height:auto}
+
+/* PROGRESS */
+.progress-bar{position:fixed;top:0;left:0;height:2px;width:0;background:linear-gradient(90deg,var(--rose-mid),var(--gold),var(--rose));z-index:9999;transition:width .1s linear}
+
+/* PETALS BG */
+.petals-bg{position:fixed;inset:0;pointer-events:none;z-index:3;overflow:hidden}
+.petal{position:absolute;top:-30px;width:12px;height:16px;background:radial-gradient(ellipse at 35% 30%,#ffc0d4,var(--rose));border-radius:70% 30% 60% 40%/65% 55% 45% 35%;opacity:0;animation:petalFall linear infinite;will-change:transform,opacity}
+@keyframes petalFall{0%{transform:translate3d(0,-30px,0) rotate(0);opacity:0}10%{opacity:.62}90%{opacity:.62}100%{transform:translate3d(var(--drift,60px),105vh,0) rotate(720deg);opacity:0}}
+
+/* CURSOR PETAL */
+.cursor-petal{position:fixed;width:10px;height:12px;background:radial-gradient(ellipse at 35% 30%,#ffc0d4,var(--rose));border-radius:70% 30% 60% 40%/65% 55% 45% 35%;pointer-events:none;z-index:9998;animation:cursorPetalFade 1.8s ease-out forwards;will-change:transform,opacity}
+@keyframes cursorPetalFade{0%{opacity:.8;transform:translate(0,0) rotate(0) scale(1)}100%{opacity:0;transform:translate(30px,60px) rotate(240deg) scale(.5)}}
+@media(hover:none){.cursor-petal{display:none}}
+
+/* HERO */
+.hero{position:relative;min-height:100vh;min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:100px 24px 140px;background:radial-gradient(ellipse 80% 60% at 50% 40%,rgba(90,35,51,.45),transparent 70%),linear-gradient(180deg,var(--wine-deep) 0%,var(--wine) 50%,var(--wine-light) 100%);overflow:hidden;z-index:5}
+.hero::after{content:"";position:absolute;bottom:0;left:0;right:0;height:120px;background:linear-gradient(180deg,transparent,var(--cream));pointer-events:none;z-index:1}
+.hero-moon{position:absolute;top:10%;right:10%;width:72px;height:72px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#fff8e1 0%,#ffe082 55%,#d4af37 100%);box-shadow:0 0 30px 6px rgba(255,224,130,.45),0 0 80px 20px rgba(212,175,55,.25);animation:moonGlow 5s ease-in-out infinite;z-index:0}
+.hero-moon::before{content:"";position:absolute;top:22%;left:20%;width:10px;height:10px;border-radius:50%;background:rgba(200,170,100,.28)}
+.hero-moon::after{content:"";position:absolute;bottom:28%;right:25%;width:6px;height:6px;border-radius:50%;background:rgba(200,170,100,.22)}
+@keyframes moonGlow{0%,100%{box-shadow:0 0 30px 6px rgba(255,224,130,.45),0 0 80px 20px rgba(212,175,55,.25)}50%{box-shadow:0 0 40px 10px rgba(255,224,130,.6),0 0 100px 30px rgba(212,175,55,.35)}}
+
+.hero-content{position:relative;z-index:2;max-width:720px;width:100%;padding:0 8px}
+.hero-date{font-family:var(--font-ui);font-size:.75rem;font-weight:500;letter-spacing:8px;text-transform:uppercase;color:var(--gold-light);margin-bottom:24px;opacity:0;animation:fadeUp 1s var(--ease-out) .2s forwards}
+.hero-date span{display:inline-block;margin:0 10px;color:rgba(232,212,160,.5)}
+.hero-title{font-family:var(--font-display);font-size:clamp(2.8rem,8vw,5.5rem);font-weight:600;line-height:1.05;letter-spacing:-.02em;color:var(--cream);margin-bottom:8px;text-shadow:0 4px 40px rgba(233,30,99,.3);opacity:0;animation:fadeUp 1.2s var(--ease-out) .4s forwards}
+.hero-title-script{display:block;font-family:var(--font-script);font-size:.45em;font-weight:500;color:var(--rose-light);margin-top:6px;line-height:1.2;text-shadow:0 2px 20px rgba(233,30,99,.5)}
+.hero-desc{max-width:500px;margin:40px auto 0;font-family:var(--font-body);font-style:italic;font-size:clamp(.95rem,1.5vw,1.1rem);line-height:1.85;color:rgba(253,248,243,.78);opacity:0;animation:fadeUp 1.2s var(--ease-out) .7s forwards}
+.scroll-hint{position:absolute;bottom:40px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:12px;font-family:var(--font-ui);font-size:.68rem;font-weight:500;letter-spacing:5px;text-transform:uppercase;color:var(--rose-light);opacity:0;animation:fadeUp 1.2s var(--ease-out) 1.2s forwards;z-index:2;white-space:nowrap}
+.scroll-hint::after{content:"";width:1px;height:44px;background:linear-gradient(180deg,var(--rose-light),transparent);animation:scrollPulse 2.2s ease-in-out infinite}
+@keyframes scrollPulse{0%,100%{transform:scaleY(1);opacity:.5}50%{transform:scaleY(1.35);opacity:1}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+
+/* SECTION BASE */
+.section{position:relative;padding:120px 24px;z-index:5}
+.container{max-width:960px;margin:0 auto;width:100%}
+.section-header{text-align:center;margin-bottom:56px;max-width:640px;margin-left:auto;margin-right:auto;padding:0 8px}
+.section-label{display:inline-flex;align-items:center;gap:14px;font-family:var(--font-ui);font-size:.7rem;font-weight:500;letter-spacing:5px;text-transform:uppercase;color:var(--gold);margin-bottom:24px;white-space:nowrap}
+.section-label::before,.section-label::after{content:"";width:32px;height:1px;background:var(--gold);opacity:.6;flex-shrink:0}
+.section-title{font-family:var(--font-display);font-size:clamp(1.75rem,4vw,2.8rem);font-weight:600;line-height:1.22;letter-spacing:-.01em;color:var(--text);margin-bottom:24px;position:relative}
+.section-title em{font-family:var(--font-script);font-style:normal;font-size:1.18em;color:var(--rose);font-weight:500;line-height:1}
+.section-title::after{content:"";display:block;width:56px;height:2px;background:linear-gradient(90deg,var(--gold),transparent);margin:24px auto 0;transform:scaleX(0);transform-origin:center;transition:transform .9s var(--ease-out) .35s}
+.section-header.in-view .section-title::after{transform:scaleX(1)}
+.section-text{font-family:var(--font-body);font-size:clamp(.98rem,1.4vw,1.08rem);line-height:1.85;color:var(--text-soft)}
+.fade-in{opacity:0;transform:translateY(28px);transition:opacity .9s var(--ease-out),transform .9s var(--ease-out)}
+.fade-in.in-view{opacity:1;transform:translateY(0)}
+
+/* SEED SECTION */
+.seed-section{background:var(--cream);padding-bottom:80px}
+.seed-stage{display:flex;flex-direction:column;align-items:center;margin:80px auto 0;max-width:440px;padding:0 24px}
+.seed-plot{position:relative;width:100%;max-width:280px;height:340px;display:flex;flex-direction:column;align-items:center;justify-content:flex-end}
+.sprout-wrap{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;z-index:4}
+.soil{width:200px;height:32px;background:linear-gradient(180deg,#3d1d2a 0%,#17060e 100%);border-radius:50% 50% 40% 40%/100% 100% 30% 30%;box-shadow:0 -6px 16px rgba(0,0,0,.15);position:relative;z-index:3;flex-shrink:0}
+.seed{
+  width:18px;height:24px;
+  background:radial-gradient(ellipse at 30% 30%,#8b6f47,#4a2f1a);
+  border-radius:50% 50% 40% 40%;
+  box-shadow:inset -2px -2px 4px rgba(0,0,0,.4),0 3px 6px rgba(0,0,0,.2);
+  transform:translateY(8px);
+  flex-shrink:0;
+  animation:seedPulse 2.5s ease-in-out infinite;
+  opacity:0;
+  animation-fill-mode:forwards;
+}
+@keyframes seedPulse{
+  0%{opacity:1;transform:translateY(8px) rotate(-2deg)}
+  50%{opacity:1;transform:translateY(6px) rotate(2deg)}
+  100%{opacity:1;transform:translateY(8px) rotate(-2deg)}
+}
+.sprout-stem{
+  width:3px;
+  height:160px;
+  background:linear-gradient(180deg,#66bb6a 0%,#2e7d32 100%);
+  border-radius:2px;
+  transform-origin:bottom center;
+  transform:scaleY(0);
+  flex-shrink:0;
+  position:relative;
+  animation:growStem 1.8s var(--ease-out) .6s forwards;
+  will-change:transform;
+}
+@keyframes growStem{
+  from{transform:scaleY(0)}
+  to{transform:scaleY(1)}
+}
+.sprout-leaf{
+  position:absolute;
+  width:28px;height:14px;
+  background:linear-gradient(135deg,#66bb6a 0%,#2e7d32 100%);
+  border-radius:100% 0 100% 0;
+  box-shadow:inset 1px 1px 2px rgba(255,255,255,.25);
+  opacity:0;
+  will-change:transform,opacity;
+}
+.sprout-leaf.left{
+  right:50%;
+  top:46px;
+  transform-origin:right center;
+  animation:bloomLeafL .7s var(--ease-spring) 2s forwards;
+}
+.sprout-leaf.right{
+  left:50%;
+  top:82px;
+  transform-origin:left center;
+  border-radius:0 100% 0 100%;
+  animation:bloomLeafR .7s var(--ease-spring) 2.2s forwards;
+}
+@keyframes bloomLeafL{
+  from{transform:rotate(-12deg) scale(0);opacity:0}
+  to{transform:rotate(-12deg) scale(1);opacity:1}
+}
+@keyframes bloomLeafR{
+  from{transform:rotate(12deg) scale(0);opacity:0}
+  to{transform:rotate(12deg) scale(1);opacity:1}
+}
+.sprout-flower{
+  position:absolute;
+  top:-95px;
+  left:50%;
+  width:105px;
+  height:105px;
+  transform-origin:center bottom;
+  opacity:0;
+  z-index:5;
+  will-change:transform,opacity;
+  animation:bloomFlower 1.2s var(--ease-spring) 2.7s forwards;
+}
+.sprout-flower svg{
+  width:100%;
+  height:100%;
+}
+@keyframes bloomFlower{
+  0%{opacity:0;transform:translateX(-50%) scale(0) rotate(-90deg)}
+  60%{opacity:1;transform:translateX(-50%) scale(1.15) rotate(10deg)}
+  100%{opacity:1;transform:translateX(-50%) scale(1) rotate(0deg)}
+}
+.seed-caption{
+  margin-top:36px;
+  font-family:var(--font-script);
+  font-size:1.7rem;
+  font-weight:500;
+  color:var(--rose);
+  text-align:center;
+  opacity:0;
+  animation:fadeInUp 1s ease 4s forwards;
+}
+@keyframes fadeInUp{
+  from{opacity:0;transform:translateY(16px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+/* GARDEN */
+.garden-section{background:var(--cream);padding-top:0}
+.garden-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:56px 36px;margin-top:56px;align-items:start}
+.flower-card{display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 8px;min-width:0}
+.flower-visual{position:relative;width:130px;height:220px;margin-bottom:24px;flex-shrink:0;transition:transform .4s var(--ease-out)}
+.flower-card:hover .flower-visual{transform:translateY(-8px)}
+.flower-visual .stem{position:absolute;bottom:0;left:50%;width:3px;height:0;background:linear-gradient(180deg,#66bb6a,#2e7d32);border-radius:2px;transform:translateX(-50%);transition:height 1.6s var(--ease-out) var(--delay,.2s);flex-shrink:0}
+.flower-visual .stem-leaf{position:absolute;width:28px;height:14px;background:linear-gradient(135deg,#66bb6a,#2e7d32);border-radius:100% 0 100% 0;transform:scale(0) rotate(-18deg);transition:transform .7s var(--ease-spring) calc(var(--delay,.2s) + 1.1s);box-shadow:inset 1px 1px 2px rgba(255,255,255,.2)}
+.flower-visual .stem-leaf.l1{bottom:58px;left:-18px;transform-origin:right center}
+.flower-visual .stem-leaf.r1{bottom:88px;right:-18px;transform-origin:left center;border-radius:0 100% 0 100%}
+.flower-visual .flower-head{position:absolute;top:0;left:50%;transform:translateX(-50%) scale(0);transition:transform 1s var(--ease-spring) calc(var(--delay,.2s) + 1.5s);z-index:2;flex-shrink:0}
+.flower-card.in-view .stem{height:130px}
+.flower-card.in-view .stem-leaf.l1{transform:scale(1) rotate(-18deg)}
+.flower-card.in-view .stem-leaf.r1{transform:scale(1) rotate(18deg)}
+.flower-card.in-view .flower-head{transform:translateX(-50%) scale(1);animation:flowerSway 6s ease-in-out calc(var(--delay,.2s) + 2.5s) infinite}
+@keyframes flowerSway{0%,100%{transform:translateX(-50%) scale(1) rotate(-1.5deg)}50%{transform:translateX(-50%) scale(1) rotate(1.5deg)}}
+.flower-caption{font-family:var(--font-script);font-size:1.5rem;font-weight:500;color:var(--rose);margin-bottom:6px;line-height:1.2;opacity:0;transition:opacity .8s var(--ease-out) calc(var(--delay,.2s) + 2.2s)}
+.flower-card.in-view .flower-caption{opacity:1}
+.flower-text{font-family:var(--font-body);font-style:italic;font-size:.95rem;line-height:1.7;color:var(--text-soft);max-width:240px;opacity:0;transition:opacity .9s var(--ease-out) calc(var(--delay,.2s) + 2.5s)}
+.flower-card.in-view .flower-text{opacity:1}
+
+/* INTERACTIVE */
+.interactive-section{background:linear-gradient(180deg,var(--cream) 0%,var(--cream-warm) 50%,var(--cream) 100%)}
+.flower-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:36px 24px;max-width:640px;margin:56px auto 0;padding:0 8px}
+.click-flower{position:relative;aspect-ratio:1;background:none;border:none;padding:0;cursor:pointer;transition:transform .35s var(--ease-out),filter .35s var(--ease-out);filter:drop-shadow(0 4px 12px rgba(185,23,75,.18));width:100%;-webkit-tap-highlight-color:transparent;font:inherit}
+.click-flower:hover{transform:translateY(-6px) scale(1.06);filter:drop-shadow(0 10px 22px rgba(185,23,75,.35))}
+.click-flower:active{transform:translateY(-2px) scale(.97)}
+.click-flower svg{width:100%;height:100%;transition:transform .6s var(--ease-spring)}
+.click-flower.bloomed svg{transform:scale(1.12)}
+.click-flower.bloomed{filter:drop-shadow(0 8px 24px rgba(185,23,75,.5))}
+
+/* BOUQUET */
+.bouquet-section{background:linear-gradient(180deg,var(--cream) 0%,var(--cream-warm) 30%,var(--rose-blush) 55%,var(--wine) 88%,var(--wine-deep) 100%);padding-bottom:80px;position:relative}
+.bouquet-section .section-label{color:var(--gold)}
+
+/* SỬA MÀU CHỮ TIÊU ĐỀ CHƯƠNG 4 ĐỂ KHÔNG BỊ TRÙNG NỀN */
+.bouquet-section .section-title{
+  color: #c9a961;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+}
+.bouquet-section .section-title em{color:var(--rose-light)}
+.bouquet-section .section-text{color:rgba(253,248,243,.82)}
+
+.bouquet-stage{display:flex;flex-direction:column;align-items:center;margin-top:56px}
+.bouquet-wrap{position:relative;display:flex;justify-content:center;width:100%;max-width:380px;margin:0 auto}
+.bouquet-glow{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:340px;height:340px;max-width:90vw;max-height:90vw;background:radial-gradient(circle,rgba(185,23,75,.22) 0%,transparent 65%);border-radius:50%;filter:blur(40px);animation:glowPulse 4s ease-in-out infinite;pointer-events:none;z-index:1}
+@keyframes glowPulse{0%,100%{opacity:.5;transform:translate(-50%,-50%) scale(1)}50%{opacity:1;transform:translate(-50%,-50%) scale(1.12)}}
+.bouquet-svg{position:relative;width:100%;height:auto;filter:drop-shadow(0 20px 40px rgba(23,6,14,.3));z-index:2}
+.bouquet-letter{max-width:560px;margin:56px auto 0;padding:36px 24px;background:rgba(253,248,243,.06);border:1px solid rgba(201,169,97,.3);border-radius:16px;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);text-align:center;opacity:0;transform:translateY(20px);transition:opacity 1s var(--ease-out) 1.6s,transform 1s var(--ease-out) 1.6s}
+.bouquet-stage.in-view .bouquet-letter{opacity:1;transform:translateY(0)}
+.bouquet-letter p{font-family:var(--font-body);font-size:clamp(.95rem,1.4vw,1.05rem);line-height:1.85;color:rgba(253,248,243,.92);margin-bottom:16px}
+.bouquet-letter p:last-of-type{margin-bottom:0}
+.bouquet-letter em{display:block;font-family:var(--font-script);font-style:normal;font-size:1.5rem;font-weight:500;color:var(--gold-light);margin-top:16px;line-height:1.2}
+
+/* FINALE */
+.finale{background:linear-gradient(180deg,var(--wine-deep) 0%,#0a0207 100%);min-height:100vh;min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px 24px;position:relative;overflow:hidden}
+.finale::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 60% 40% at 50% 45%,rgba(185,23,75,.22),transparent 70%);pointer-events:none}
+.finale-content{position:relative;z-index:2;max-width:640px;width:100%}
+.finale-title{font-family:var(--font-display);font-size:clamp(2.2rem,6.5vw,4.2rem);font-weight:600;line-height:1.08;letter-spacing:-.02em;color:var(--cream);margin-bottom:24px;text-shadow:0 4px 40px rgba(233,30,99,.4)}
+.finale-title span{display:block;font-family:var(--font-script);font-size:.5em;font-weight:500;color:var(--gold-light);margin-bottom:6px;line-height:1.2;text-shadow:0 2px 20px rgba(212,175,55,.4)}
+.finale-subtitle{font-family:var(--font-script);font-size:clamp(1.35rem,2.8vw,1.8rem);font-weight:500;color:var(--rose-light);margin-bottom:56px;line-height:1.2}
+.finale-btn{padding:18px 44px;font-family:var(--font-ui);font-size:.85rem;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:var(--cream);background:linear-gradient(135deg,var(--rose-mid),var(--rose));border:none;border-radius:999px;cursor:pointer;box-shadow:0 12px 32px rgba(185,23,75,.45);transition:transform .3s var(--ease-out),box-shadow .3s var(--ease-out);animation:finalePulse 3s ease-in-out infinite;-webkit-tap-highlight-color:transparent}
+@keyframes finalePulse{0%,100%{box-shadow:0 12px 32px rgba(185,23,75,.45)}50%{box-shadow:0 12px 44px rgba(185,23,75,.7)}}
+.finale-btn:hover{transform:translateY(-3px) scale(1.02)}
+.finale-btn:active{transform:translateY(-1px) scale(.99)}
+.finale-sign{margin-top:56px;font-family:var(--font-script);font-size:clamp(1.3rem,2.2vw,1.6rem);font-weight:500;color:var(--gold-light);opacity:.85;line-height:1.2}
+
+/* POPUP */
+.flower-popup{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(23,6,14,.78);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);z-index:5000;padding:24px;opacity:0;visibility:hidden;transition:opacity .4s var(--ease-out),visibility .4s}
+.flower-popup.show{opacity:1;visibility:visible}
+.flower-popup-inner{position:relative;background:linear-gradient(160deg,var(--cream) 0%,var(--rose-blush) 100%);padding:36px 36px 24px;border-radius:20px;max-width:420px;width:100%;max-height:90vh;overflow-y:auto;scrollbar-width:none;text-align:center;box-shadow:0 30px 70px rgba(23,6,14,.5),0 0 0 1px rgba(201,169,97,.3);transform:scale(.88);transition:transform .45s var(--ease-spring)}
+.flower-popup-inner::-webkit-scrollbar{display:none}
+.flower-popup.show .flower-popup-inner{transform:scale(1)}
+.flower-popup-icon{width:48px;height:48px;margin:0 auto 16px}
+.flower-popup-number{font-family:var(--font-ui);font-size:.68rem;font-weight:500;letter-spacing:5px;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
+.flower-popup-msg{font-family:var(--font-body);font-style:italic;font-size:clamp(1rem,1.5vw,1.08rem);line-height:1.75;color:var(--text);margin-bottom:36px;padding:0 8px}
+.flower-popup-close{padding:11px 30px;background:linear-gradient(135deg,var(--rose-mid),var(--rose));color:var(--cream);border:none;border-radius:999px;font-family:var(--font-ui);font-size:.75rem;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;cursor:pointer;transition:transform .25s var(--ease-out),box-shadow .25s var(--ease-out);box-shadow:0 6px 16px rgba(185,23,75,.3);-webkit-tap-highlight-color:transparent}
+.flower-popup-close:hover{transform:translateY(-2px);box-shadow:0 10px 22px rgba(185,23,75,.45)}
+
+/* PARTICLES */
+.heart-float{position:fixed;pointer-events:none;z-index:8002;animation:heartFloat 2.5s cubic-bezier(.2,.8,.3,1) forwards;will-change:transform,opacity}
+@keyframes heartFloat{0%{transform:translate(-50%,-50%) scale(.3) rotate(0);opacity:0}20%{transform:translate(-50%,-50%) scale(1.15) rotate(-10deg);opacity:1}100%{transform:translate(calc(-50% + var(--dx)),calc(-50% + var(--dy))) scale(.6) rotate(20deg);opacity:0}}
+.fw-particle{position:fixed;width:6px;height:6px;border-radius:50%;pointer-events:none;z-index:8001;animation:fwBurst 1.5s cubic-bezier(.2,.8,.3,1) forwards;will-change:transform,opacity}
+@keyframes fwBurst{0%{transform:translate(-50%,-50%) scale(1);opacity:1}60%{opacity:1}100%{transform:translate(calc(-50% + var(--tx)),calc(-50% + var(--ty))) scale(.2);opacity:0}}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .section{padding:92px 20px}
+  .section-header{margin-bottom:40px}
+  .garden-row{grid-template-columns:repeat(2,minmax(0,1fr));gap:48px 24px}
+  .flower-grid{grid-template-columns:repeat(3,minmax(0,1fr));max-width:480px;gap:24px 16px}
+  .hero-moon{width:60px;height:60px;top:8%;right:8%}
+}
+@media(max-width:640px){
+  body{font-size:15px}
+  .section{padding:76px 20px}
+  .section-header{margin-bottom:32px}
+  .hero{padding:96px 20px 150px}
+  .hero-moon{width:52px;height:52px;top:6%;right:6%;opacity:.85}
+  .hero-date{font-size:.66rem;letter-spacing:6px}
+  .hero-date span{margin:0 6px}
+  .hero-desc{font-size:.92rem;margin-top:24px}
+  .scroll-hint{bottom:32px;font-size:.62rem;letter-spacing:4px}
+  .scroll-hint::after{height:36px}
+  .section-label{font-size:.62rem;letter-spacing:4px;gap:10px}
+  .section-label::before,.section-label::after{width:20px}
+
+  .seed-stage{margin-top:40px;padding:0 16px}
+  .seed-plot{height:280px;max-width:240px}
+  .soil{width:160px;height:26px}
+  .sprout-stem{height:130px}
+  .sprout-leaf{width:24px;height:12px}
+  .sprout-leaf.left{top:38px}
+  .sprout-leaf.right{top:68px}
+  .sprout-flower{top:-80px;width:90px;height:90px}
+  .seed-caption{font-size:1.4rem;margin-top:28px}
+
+  .garden-row{grid-template-columns:1fr;gap:56px;max-width:380px;margin-left:auto;margin-right:auto}
+  .flower-visual{width:110px;height:190px}
+  .flower-card.in-view .stem{height:110px}
+  .flower-caption{font-size:1.35rem}
+  .flower-text{font-size:.92rem;max-width:300px}
+  .flower-grid{grid-template-columns:repeat(2,minmax(0,1fr));max-width:320px;gap:20px 12px}
+  .bouquet-wrap{max-width:280px}
+  .bouquet-letter{padding:28px 20px;margin-top:40px;border-radius:14px}
+  .bouquet-letter em{font-size:1.35rem}
+  .finale{padding:56px 20px}
+  .finale-btn{padding:16px 36px;font-size:.76rem;letter-spacing:2.5px}
+  .finale-sign{margin-top:40px}
+  .flower-popup{padding:16px}
+  .flower-popup-inner{padding:28px 24px 20px;border-radius:16px}
+  .flower-popup-icon{width:40px;height:40px}
+  .flower-popup-msg{margin-bottom:24px}
+  .flower-popup-close{padding:10px 26px;font-size:.7rem;letter-spacing:2px}
+}
+@media(max-width:380px){
+  .hero{padding:88px 16px 140px}
+  .section-label::before,.section-label::after{display:none}
+  .section-label{letter-spacing:3.5px;font-size:.6rem}
+  .flower-grid{max-width:260px;gap:12px}
+  .bouquet-wrap{max-width:240px}
+  .seed-plot{height:260px;max-width:220px}
+}
+@media(max-height:500px) and (orientation:landscape){
+  .hero{min-height:auto;padding:60px 24px 80px}
+  .hero-moon{width:40px;height:40px}
+  .scroll-hint{display:none}
+  .finale{min-height:auto;padding:60px 24px}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+  .fade-in{opacity:1;transform:none}
+  .petal,.cursor-petal{display:none}
+  .bouquet-glow{animation:none}
+}
+</style>
+</head>
+<body>
+
+<div class="progress-bar" id="progressBar"></div>
+<div class="petals-bg" id="petalsBg"></div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-moon"></div>
+  <div class="hero-content">
+    <div class="hero-date">20 <span>·</span> 10</div>
+    <h1 class="hero-title">
+      Gửi Bé Heo
+      <span class="hero-title-script">người anh thương nhất</span>
+    </h1>
+    <p class="hero-desc">Hôm nay là ngày của em — ngày anh muốn gửi đến em một vườn hồng nhỏ, cùng tất cả những điều dịu dàng nhất mà anh chưa từng nói.</p>
+  </div>
+  <div class="scroll-hint">cuộn xuống</div>
+</section>
+
+<!-- SEED -->
+<section class="section seed-section">
+  <div class="container">
+    <div class="section-header fade-in">
+      <div class="section-label">Chương I</div>
+      <h2 class="section-title">Từ một hạt mầm <em>nhỏ xíu</em></h2>
+      <p class="section-text">Ngày xưa có một hạt mầm nhỏ, chẳng ai để ý đến. Nhưng anh đã nhặt nó lên, vun đất mỗi ngày, tưới từng giọt nước — và chờ nó nở thành hoa.</p>
+    </div>
+
+    <div class="seed-stage">
+      <div class="seed-plot">
+        <div class="sprout-wrap">
+          <div class="sprout-flower">
+            <svg viewBox="-50 -50 100 100" aria-hidden="true">
+              <ellipse cx="0" cy="0" rx="38" ry="20" fill="#e4356c"/>
+              <ellipse cx="0" cy="0" rx="38" ry="20" fill="#c2185b" transform="rotate(72)"/>
+              <ellipse cx="0" cy="0" rx="38" ry="20" fill="#8c1338" transform="rotate(144)"/>
+              <ellipse cx="0" cy="0" rx="38" ry="20" fill="#e4356c" transform="rotate(216)"/>
+              <ellipse cx="0" cy="0" rx="38" ry="20" fill="#c2185b" transform="rotate(288)"/>
+              <ellipse cx="0" cy="0" rx="22" ry="12" fill="#f8a5c2" transform="rotate(36)"/>
+              <ellipse cx="0" cy="0" rx="22" ry="12" fill="#f8a5c2" transform="rotate(108)"/>
+              <circle cx="0" cy="0" r="10" fill="#6b0f2a"/>
+              <circle cx="0" cy="0" r="4" fill="#4a0f22"/>
+            </svg>
+          </div>
+          <div class="sprout-leaf left"></div>
+          <div class="sprout-leaf right"></div>
+          <div class="sprout-stem"></div>
+          <div class="seed"></div>
+        </div>
+        <div class="soil"></div>
+      </div>
+      <p class="seed-caption">Hạt mầm ấy... chính là em.</p>
+    </div>
+  </div>
+</section>
+
+<!-- GARDEN -->
+<section class="section garden-section">
+  <div class="container">
+    <div class="section-header fade-in">
+      <div class="section-label">Chương II</div>
+      <h2 class="section-title">Ba bông hồng, <em>ba lời muốn nói</em></h2>
+      <p class="section-text">Mỗi bông hoa trong vườn anh trồng đều mang một ý nghĩa riêng — như mỗi điều anh luôn muốn nói với em.</p>
+    </div>
+    <div class="garden-row">
+      <div class="flower-card fade-in" style="--delay:0s;">
+        <div class="flower-visual">
+          <div class="stem"></div><div class="stem-leaf l1"></div><div class="stem-leaf r1"></div>
+          <div class="flower-head">
+            <svg width="105" height="105" viewBox="-50 -50 100 100" aria-hidden="true">
+              <ellipse cx="0" cy="0" rx="38" ry="20" fill="#b9174b"/>
+              <ellipse cx="0" cy="0" rx="38" ry="20" fill="#8c1338" transform="rotate(72)"/>
+              <ellipse cx="0" cy="0" rx="38" ry="20" fill="#6b0f2a" transform="rotate(144)"/>
+              <ellipse cx="0" cy="0" rx="38" ry="20" fill="#b9174b" transform="rotate(216)"/>
+              <ellipse cx="0" cy="0" rx="38" ry="20" fill="#8c1338" transform="rotate(288)"/>
+              <ellipse cx="0" cy="0" rx="22" ry="12" fill="#e4356c" transform="rotate(36)"/>
+              <ellipse cx="0" cy="0" rx="22" ry="12" fill="#d82d5f" transform="rotate(108)"/>
+              <circle cx="0" cy="0" r="10" fill="#4a0f22"/>
+              <circle cx="0" cy="0" r="4" fill="#2a0512"/>
+            </svg>
+          </div>
+        </div>
+        <div class="flower-caption">Vì em dịu dàng</div>
+        <p class="flower-text">Như đóa hồng nhung đầu tiên — mềm mại, kiên cường, và luôn biết cách làm anh dịu lại.</p>
+      </div>
+      <div class="flower-card fade-in" style="--delay:.3s;">
+        <div class="flower-visual">
+          <div class="stem"></div><div class="stem-leaf l1"></div><div class="stem-leaf r1"></div>
+          <div class="flower-head">
+            <svg width="105" height="105" viewBox="-50 -50 100 100" aria-hidden="true">
+              <ellipse cx="0" cy="0" rx="36" ry="19" fill="#f48fb1"/>
+              <ellipse cx="0" cy="0" rx="36" ry="19" fill="#ec6a93" transform="rotate(72)"/>
+              <ellipse cx="0" cy="0" rx="36" ry="19" fill="#c2185b" transform="rotate(144)"/>
+              <ellipse cx="0" cy="0" rx="36" ry="19" fill="#f48fb1" transform="rotate(216)"/>
+              <ellipse cx="0" cy="0" rx="36" ry="19" fill="#ec6a93" transform="rotate(288)"/>
+              <ellipse cx="0" cy="0" rx="20" ry="11" fill="#fce4ec" transform="rotate(36)"/>
+              <ellipse cx="0" cy="0" rx="20" ry="11" fill="#f8bbd0" transform="rotate(108)"/>
+              <circle cx="0" cy="0" r="9" fill="#b9174b"/>
+            </svg>
+          </div>
+        </div>
+        <div class="flower-caption">Vì em rạng rỡ</div>
+        <p class="flower-text">Nụ cười em — như hồng phấn buổi sớm mai — làm cả ngày dài của anh bừng sáng.</p>
+      </div>
+      <div class="flower-card fade-in" style="--delay:.6s;">
+        <div class="flower-visual">
+          <div class="stem"></div><div class="stem-leaf l1"></div><div class="stem-leaf r1"></div>
+          <div class="flower-head">
+            <svg width="105" height="105" viewBox="-50 -50 100 100" aria-hidden="true">
+              <ellipse cx="0" cy="0" rx="38" ry="20" fill="#ff6b9d"/>
+              <ellipse cx="0" cy="0" rx="38" ry="20" fill="#e4356c" transform="rotate(72)"/>
+              <ellipse cx="0" cy="0" rx="38" ry="20" fill="#b9174b" transform="rotate(144)"/>
+              <ellipse cx="0" cy="0" rx="38" ry="20" fill="#ff6b9d" transform="rotate(216)"/>
+              <ellipse cx="0" cy="0" rx="38" ry="20" fill="#e4356c" transform="rotate(288)"/>
+              <ellipse cx="0" cy="0" rx="22" ry="12" fill="#ffb3c6" transform="rotate(36)"/>
+              <ellipse cx="0" cy="0" rx="22" ry="12" fill="#ff8fb1" transform="rotate(108)"/>
+              <circle cx="0" cy="0" r="10" fill="#8c1338"/>
+              <circle cx="0" cy="0" r="4" fill="#4a0f22"/>
+            </svg>
+          </div>
+        </div>
+        <div class="flower-caption">Vì em là em</div>
+        <p class="flower-text">Không cần là ai khác. Chỉ cần là Bé Heo — và thế giới của anh đã đủ trọn vẹn.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INTERACTIVE -->
+<section class="section interactive-section">
+  <div class="container">
+    <div class="section-header fade-in">
+      <div class="section-label">Chương III</div>
+      <h2 class="section-title">Mỗi cánh hoa <em>là một lời yêu</em></h2>
+      <p class="section-text">Có tám bông hoa nhỏ trong vườn. Chạm vào từng bông — em sẽ nghe được anh muốn nói điều gì.</p>
+    </div>
+    <div class="flower-grid fade-in" id="flowerGrid"></div>
+  </div>
+</section>
+
+<!-- BOUQUET -->
+<section class="section bouquet-section">
+  <div class="container">
+    <div class="section-header fade-in">
+      <div class="section-label">Chương IV</div>
+      <h2 class="section-title">Bó hoa này <em>là của em</em></h2>
+      <p class="section-text">Tất cả những bông hoa anh trồng, anh gói lại thành một bó — gửi đến em, duy nhất em.</p>
+    </div>
+    <div class="bouquet-stage fade-in">
+      <div class="bouquet-wrap">
+        <div class="bouquet-glow"></div>
+        <svg class="bouquet-svg" viewBox="0 0 400 520" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <defs>
+            <!-- REUSABLE DETAILED ROSE TEMPLATES -->
+            <g id="roseRed">
+              <ellipse cx="0" cy="0" rx="34" ry="18" fill="#e4356c"/>
+              <ellipse cx="0" cy="0" rx="34" ry="18" fill="#c2185b" transform="rotate(72)"/>
+              <ellipse cx="0" cy="0" rx="34" ry="18" fill="#8c1338" transform="rotate(144)"/>
+              <ellipse cx="0" cy="0" rx="34" ry="18" fill="#e4356c" transform="rotate(216)"/>
+              <ellipse cx="0" cy="0" rx="34" ry="18" fill="#c2185b" transform="rotate(288)"/>
+              <ellipse cx="0" cy="0" rx="20" ry="11" fill="#f8a5c2" transform="rotate(36)"/>
+              <circle cx="0" cy="0" r="8" fill="#6b0f2a"/>
+            </g>
+            <g id="rosePink">
+              <ellipse cx="0" cy="0" rx="32" ry="17" fill="#ff8fb1"/>
+              <ellipse cx="0" cy="0" rx="32" ry="17" fill="#e4356c" transform="rotate(72)"/>
+              <ellipse cx="0" cy="0" rx="32" ry="17" fill="#b9174b" transform="rotate(144)"/>
+              <ellipse cx="0" cy="0" rx="32" ry="17" fill="#ff8fb1" transform="rotate(216)"/>
+              <ellipse cx="0" cy="0" rx="32" ry="17" fill="#e4356c" transform="rotate(288)"/>
+              <ellipse cx="0" cy="0" rx="18" ry="10" fill="#ffb3c6" transform="rotate(36)"/>
+              <circle cx="0" cy="0" r="7" fill="#8c1338"/>
+            </g>
+            <g id="roseBlush">
+              <ellipse cx="0" cy="0" rx="30" ry="16" fill="#fce4ec"/>
+              <ellipse cx="0" cy="0" rx="30" ry="16" fill="#ec6a93" transform="rotate(72)"/>
+              <ellipse cx="0" cy="0" rx="30" ry="16" fill="#c2185b" transform="rotate(144)"/>
+              <ellipse cx="0" cy="0" rx="30" ry="16" fill="#fce4ec" transform="rotate(216)"/>
+              <ellipse cx="0" cy="0" rx="30" ry="16" fill="#ec6a93" transform="rotate(288)"/>
+              <ellipse cx="0" cy="0" rx="16" ry="9" fill="#f8bbd0" transform="rotate(36)"/>
+              <circle cx="0" cy="0" r="6" fill="#b9174b"/>
+            </g>
+
+            <linearGradient id="rgGold" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#e8d4a0"/><stop offset="100%" stop-color="#c9a961"/></linearGradient>
+            <linearGradient id="wrapGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#fce4ec"/><stop offset="50%" stop-color="#f8a5c2"/><stop offset="100%" stop-color="#e8d4a0"/></linearGradient>
+          </defs>
+
+          <!-- Stems -->
+          <g stroke="#2e7d32" stroke-width="3" stroke-linecap="round" fill="none">
+            <path d="M200 360 Q200 280 200 135"/>
+            <path d="M200 360 Q160 270 115 145"/>
+            <path d="M200 360 Q240 270 285 145"/>
+            <path d="M200 360 Q130 280 75 185"/>
+            <path d="M200 360 Q270 280 325 185"/>
+            <path d="M200 360 Q180 260 145 105"/>
+            <path d="M200 360 Q220 260 255 105"/>
+          </g>
+
+          <!-- Detailed Roses Bouquet Cluster -->
+          <g transform="translate(200,115)">
+            <use href="#roseRed" x="0" y="-15" />
+            <use href="#rosePink" x="-65" y="10" />
+            <use href="#rosePink" x="65" y="10" />
+            <use href="#roseBlush" x="-38" y="-42" />
+            <use href="#roseBlush" x="38" y="-42" />
+            <use href="#roseRed" x="-90" y="48" />
+            <use href="#roseRed" x="90" y="48" />
+            <use href="#roseBlush" x="0" y="25" />
+          </g>
+
+          <!-- Wrapping paper & ribbon -->
+          <path d="M130 320 L200 480 L270 320 Q240 300 200 310 Q160 300 130 320 Z" fill="url(#wrapGrad)" opacity="0.95"/>
+          <path d="M130 320 Q165 340 200 310 Q235 340 270 320 Q240 370 200 480 Q160 370 130 320 Z" fill="url(#wrapGrad)" opacity="0.75"/>
+          <!-- Ribbon bow -->
+          <path d="M200 320 C180 300 150 310 160 330 C170 350 200 330 200 320 Z" fill="url(#rgGold)"/>
+          <path d="M200 320 C220 300 250 310 240 330 C230 350 200 330 200 320 Z" fill="url(#rgGold)"/>
+          <circle cx="200" cy="323" r="10" fill="#b9174b"/>
+        </svg>
+      </div>
+      <div class="bouquet-letter">
+        <p>"Gửi Bé Heo của anh, người mang lại cho anh những bình yên ngọt ngào nhất. Chúc em một ngày 20/10 ngập tràn nụ cười, luôn xinh đẹp, rạng rỡ và mãi là công chúa nhỏ trong thế giới của anh."</p>
+        <em>Yêu em nhiều lắm ❤️</em>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINALE -->
+<section class="finale">
+  <div class="finale-content">
+    <h2 class="finale-title">
+      <span>Chúc mừng 20.10</span>
+      Bé Heo Của Anh
+    </h2>
+    <p class="finale-subtitle">Mong mọi điều dịu dàng nhất trên đời sẽ ôm lấy em.</p>
+    <button class="finale-btn" id="finaleBtn">Bấm vào đây để nhận quà bất ngờ ✨</button>
+    <div class="finale-sign">— Mãi yêu em —</div>
+  </div>
+</section>
+
+<!-- POPUP MODAL -->
+<div class="flower-popup" id="flowerPopup" aria-hidden="true">
+  <div class="flower-popup-inner">
+    <div class="flower-popup-icon" id="popupIcon"></div>
+    <div class="flower-popup-number" id="popupNumber">Bông hoa số 1</div>
+    <p class="flower-popup-msg" id="popupMsg">Nội dung lời nhắn...</p>
+    <button class="flower-popup-close" id="popupClose">Cất giữ ❤️</button>
+  </div>
+</div>
+
+<script>
+// PETALS RAIN
+const petalsBg = document.getElementById('petalsBg');
+const petalCount = window.innerWidth < 640 ? 12 : 22;
+for(let i=0; i<petalCount; i++){
+  const p = document.createElement('div');
+  p.className = 'petal';
+  p.style.left = `${Math.random()*100}vw`;
+  p.style.top = `${-20 - Math.random()*40}px`;
+  p.style.animationDuration = `${7 + Math.random()*8}s`;
+  p.style.animationDelay = `${Math.random()*8}s`;
+  p.style.setProperty('--drift', `${(Math.random()-.5)*140}px`);
+  p.style.transform = `scale(${.6 + Math.random()*.8})`;
+  petalsBg.appendChild(p);
+}
+
+// CURSOR TRAIL PETALS
+let lastX = 0, lastY = 0, throttle = 0;
+document.addEventListener('mousemove', (e) => {
+  const now = Date.now();
+  if(now - throttle < 90) return;
+  if(Math.hypot(e.clientX - lastX, e.clientY - lastY) < 45) return;
+  lastX = e.clientX; lastY = e.clientY; throttle = now;
+
+  const cp = document.createElement('div');
+  cp.className = 'cursor-petal';
+  cp.style.left = `${e.clientX}px`;
+  cp.style.top = `${e.clientY}px`;
+  document.body.appendChild(cp);
+  setTimeout(() => cp.remove(), 1800);
+});
+
+// PROGRESS BAR
+window.addEventListener('scroll', () => {
+  const st = window.scrollY;
+  const dh = document.documentElement.scrollHeight - window.innerHeight;
+  document.getElementById('progressBar').style.width = `${(st / dh) * 100}%`;
+});
+
+// INTERSECTION OBSERVER FOR FADE-INS
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.classList.add('in-view');
+    }
+  });
+}, { threshold: 0.18 });
+
+document.querySelectorAll('.fade-in, .section-header, .bouquet-stage, .flower-card').forEach(el => observer.observe(el));
+
+// INTERACTIVE FLOWER GRID (8 FLOWERS)
+const flowerMessages = [
+  "Bông hoa thứ nhất: Cảm ơn Bé Heo vì đã luôn mang năng lượng tích cực và tiếng cười đến bên anh mỗi ngày.",
+  "Bông hoa thứ hai: Chúc cho đôi mắt em luôn lấp lánh niềm vui, không bao giờ phải buồn vì bất cứ điều gì.",
+  "Bông hoa thứ ba: Cảm ơn em vì cái nắm tay ấm áp khi coi phim mà em lấy hết can đảm để làm.",
+  "Bông hoa thứ tư: Mong rằng mọi ước mơ nhỏ xinh của em đều sẽ trở thành hiện thực đúng như em mong đợi.",
+  "Bông hoa thứ năm: Cảm ơn em vì đã kiên nhẫn và luôn dịu dàng với một đứa hay lo lắng như anh.",
+  "Bông hoa thứ sáu: Chúc Bé Heo của anh ngày càng xinh đẹp, rạng rỡ và lúc nào cũng tràn đầy sức sống.",
+  "Bông hoa thứ bảy: Cảm ơn vì định mệnh đã để anh gặp được con Heo dễ thương nhất trên đời này.",
+  "Bông hoa thứ tám: Và bông hoa cuối cùng... là lời hứa anh sẽ luôn ở bên, che chở và cưng chiều em cả đời."
+];
+
+const flowerGrid = document.getElementById('flowerGrid');
+const flowerPopup = document.getElementById('flowerPopup');
+const popupMsg = document.getElementById('popupMsg');
+const popupNumber = document.getElementById('popupNumber');
+const popupIcon = document.getElementById('popupIcon');
+const popupClose = document.getElementById('popupClose');
+
+flowerMessages.forEach((msg, idx) => {
+  const btn = document.createElement('button');
+  btn.className = 'click-flower';
+  btn.setAttribute('aria-label', `Bông hoa số ${idx+1}`);
+  btn.innerHTML = `
+    <svg viewBox="-50 -50 100 100">
+      <ellipse cx="0" cy="0" rx="36" ry="19" fill="${idx%2===0?'#e4356c':'#f48fb1'}"/>
+      <ellipse cx="0" cy="0" rx="36" ry="19" fill="${idx%3===0?'#b9174b':'#ec6a93'}" transform="rotate(72)"/>
+      <ellipse cx="0" cy="0" rx="36" ry="19" fill="${idx%2===0?'#8c1338':'#c2185b'}" transform="rotate(144)"/>
+      <ellipse cx="0" cy="0" rx="36" ry="19" fill="${idx%2===0?'#e4356c':'#f48fb1'}" transform="rotate(216)"/>
+      <ellipse cx="0" cy="0" rx="36" ry="19" fill="${idx%3===0?'#b9174b':'#ec6a93'}" transform="rotate(288)"/>
+      <circle cx="0" cy="0" r="10" fill="#e8d4a0"/>
+      <circle cx="0" cy="0" r="4" fill="#6b0f2a"/>
+    </svg>
+  `;
+
+  btn.addEventListener('click', (e) => {
+    btn.classList.add('bloomed');
+    popupNumber.textContent = `Bông hoa số ${idx + 1}`;
+    popupMsg.textContent = msg;
+    popupIcon.innerHTML = btn.innerHTML;
+    flowerPopup.classList.add('show');
+    flowerPopup.setAttribute('aria-hidden', 'false');
+
+    // Floating hearts on click
+    const rect = btn.getBoundingClientRect();
+    createFloatingHearts(rect.left + rect.width/2, rect.top + rect.height/2);
+  });
+
+  flowerGrid.appendChild(btn);
+});
+
+function closePopup(){
+  flowerPopup.classList.remove('show');
+  flowerPopup.setAttribute('aria-hidden', 'true');
+}
+
+popupClose.addEventListener('click', closePopup);
+flowerPopup.addEventListener('click', (e) => {
+  if(e.target === flowerPopup) closePopup();
+});
+document.addEventListener('keydown', (e) => {
+  if(e.key === 'Escape') closePopup();
+});
+
+// FLOATING HEARTS & FIREWORKS EFFECT
+function createFloatingHearts(x, y){
+  for(let i=0; i<8; i++){
+    const h = document.createElement('div');
+    h.className = 'heart-float';
+    h.innerHTML = '❤️';
+    h.style.left = `${x}px`;
+    h.style.top = `${y}px`;
+    const angle = (i / 8) * Math.PI * 2;
+    const dist = 60 + Math.random() * 80;
+    h.style.setProperty('--dx', `${Math.cos(angle) * dist}px`);
+    h.style.setProperty('--dy', `${Math.sin(angle) * dist - 50}px`);
+    h.style.fontSize = `${14 + Math.random()*12}px`;
+    document.body.appendChild(h);
+    setTimeout(() => h.remove(), 2500);
+  }
+}
+
+document.getElementById('finaleBtn').addEventListener('click', (e) => {
+  const rect = e.target.getBoundingClientRect();
+  const cx = rect.left + rect.width/2;
+  const cy = rect.top + rect.height/2;
+
+  // Massive fireworks & hearts burst
+  for(let i=0; i<36; i++){
+    const p = document.createElement('div');
+    p.className = 'fw-particle';
+    const colors = ['#e4356c', '#f8a5c2', '#c9a961', '#ff6b9d', '#ffffff'];
+    p.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+    p.style.left = `${cx}px`;
+    p.style.top = `${cy}px`;
+    const angle = Math.random() * Math.PI * 2;
+    const dist = 80 + Math.random() * 220;
+    p.style.setProperty('--tx', `${Math.cos(angle) * dist}px`);
+    p.style.setProperty('--ty', `${Math.sin(angle) * dist}px`);
+    document.body.appendChild(p);
+    setTimeout(() => p.remove(), 1500);
+  }
+
+  createFloatingHearts(cx, cy);
+  setTimeout(() => createFloatingHearts(window.innerWidth/2, window.innerHeight/2), 300);
+  setTimeout(() => createFloatingHearts(window.innerWidth/3, window.innerHeight/3), 600);
+});
+</script>
+</body>
+</html>
