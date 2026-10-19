@@ -16,10 +16,11 @@
   --cream:#fdf8f3;--cream-warm:#f9f0e6;
   --gold:#c9a961;--gold-light:#e8d4a0;
   --text:#2d1420;--text-soft:#6b4a56;
-  --font-display:'Playfair Display',Georgia,serif;
-  --font-body:'Lora',Georgia,serif;
-  --font-script:'Dancing Script',cursive;
-  --font-ui:'Inter',-apple-system,sans-serif;
+  /* Font stacks có fallback tiếng Việt tốt */
+  --font-display:'Playfair Display','Times New Roman',Georgia,serif;
+  --font-body:'Lora','Times New Roman',Georgia,serif;
+  --font-script:'Dancing Script','Brush Script MT','Segoe Script',cursive;
+  --font-ui:'Inter','Segoe UI',Tahoma,sans-serif;
   --ease-out:cubic-bezier(0.22,1,0.36,1);
   --ease-spring:cubic-bezier(0.34,1.56,0.64,1);
 }
@@ -90,13 +91,12 @@ img,svg{display:block;max-width:100%;height:auto}
   transform:translateY(8px);
   flex-shrink:0;
   animation:seedPulse 2.5s ease-in-out infinite;
-  opacity:0;
-  animation-fill-mode:forwards;
+  opacity:1;
 }
 @keyframes seedPulse{
-  0%{opacity:1;transform:translateY(8px) rotate(-2deg)}
-  50%{opacity:1;transform:translateY(6px) rotate(2deg)}
-  100%{opacity:1;transform:translateY(8px) rotate(-2deg)}
+  0%{transform:translateY(8px) rotate(-2deg)}
+  50%{transform:translateY(6px) rotate(2deg)}
+  100%{transform:translateY(8px) rotate(-2deg)}
 }
 .sprout-stem{
   width:3px;
@@ -144,12 +144,14 @@ img,svg{display:block;max-width:100%;height:auto}
   from{transform:rotate(12deg) scale(0);opacity:0}
   to{transform:rotate(12deg) scale(1);opacity:1}
 }
+/* FIX: translateX(-50%) Ở BASE CSS để tránh jump khi animation bắt đầu */
 .sprout-flower{
   position:absolute;
   top:-95px;
   left:50%;
   width:105px;
   height:105px;
+  transform:translateX(-50%) scale(0);
   transform-origin:center bottom;
   opacity:0;
   z-index:5;
@@ -214,12 +216,7 @@ img,svg{display:block;max-width:100%;height:auto}
 /* BOUQUET */
 .bouquet-section{background:linear-gradient(180deg,var(--cream) 0%,var(--cream-warm) 30%,var(--rose-blush) 55%,var(--wine) 88%,var(--wine-deep) 100%);padding-bottom:80px;position:relative}
 .bouquet-section .section-label{color:var(--gold)}
-
-/* SỬA MÀU CHỮ TIÊU ĐỀ CHƯƠNG 4 ĐỂ KHÔNG BỊ TRÙNG NỀN */
-.bouquet-section .section-title{
-  color: #c9a961;
-  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
-}
+.bouquet-section .section-title{color:#c9a961;text-shadow:0 2px 12px rgba(0,0,0,.4)}
 .bouquet-section .section-title em{color:var(--rose-light)}
 .bouquet-section .section-text{color:rgba(253,248,243,.82)}
 
@@ -286,7 +283,6 @@ img,svg{display:block;max-width:100%;height:auto}
   .scroll-hint::after{height:36px}
   .section-label{font-size:.62rem;letter-spacing:4px;gap:10px}
   .section-label::before,.section-label::after{width:20px}
-
   .seed-stage{margin-top:40px;padding:0 16px}
   .seed-plot{height:280px;max-width:240px}
   .soil{width:160px;height:26px}
@@ -296,7 +292,6 @@ img,svg{display:block;max-width:100%;height:auto}
   .sprout-leaf.right{top:68px}
   .sprout-flower{top:-80px;width:90px;height:90px}
   .seed-caption{font-size:1.4rem;margin-top:28px}
-
   .garden-row{grid-template-columns:1fr;gap:56px;max-width:380px;margin-left:auto;margin-right:auto}
   .flower-visual{width:110px;height:190px}
   .flower-card.in-view .stem{height:110px}
@@ -488,9 +483,8 @@ img,svg{display:block;max-width:100%;height:auto}
     <div class="bouquet-stage fade-in">
       <div class="bouquet-wrap">
         <div class="bouquet-glow"></div>
-        <svg class="bouquet-svg" viewBox="0 0 400 520" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <svg class="bouquet-svg" viewBox="0 0 400 520" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Bó hoa hồng">
           <defs>
-            <!-- REUSABLE DETAILED ROSE TEMPLATES -->
             <g id="roseRed">
               <ellipse cx="0" cy="0" rx="34" ry="18" fill="#e4356c"/>
               <ellipse cx="0" cy="0" rx="34" ry="18" fill="#c2185b" transform="rotate(72)"/>
@@ -518,12 +512,9 @@ img,svg{display:block;max-width:100%;height:auto}
               <ellipse cx="0" cy="0" rx="16" ry="9" fill="#f8bbd0" transform="rotate(36)"/>
               <circle cx="0" cy="0" r="6" fill="#b9174b"/>
             </g>
-
             <linearGradient id="rgGold" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#e8d4a0"/><stop offset="100%" stop-color="#c9a961"/></linearGradient>
             <linearGradient id="wrapGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#fce4ec"/><stop offset="50%" stop-color="#f8a5c2"/><stop offset="100%" stop-color="#e8d4a0"/></linearGradient>
           </defs>
-
-          <!-- Stems -->
           <g stroke="#2e7d32" stroke-width="3" stroke-linecap="round" fill="none">
             <path d="M200 360 Q200 280 200 135"/>
             <path d="M200 360 Q160 270 115 145"/>
@@ -533,23 +524,18 @@ img,svg{display:block;max-width:100%;height:auto}
             <path d="M200 360 Q180 260 145 105"/>
             <path d="M200 360 Q220 260 255 105"/>
           </g>
-
-          <!-- Detailed Roses Bouquet Cluster -->
           <g transform="translate(200,115)">
-            <use href="#roseRed" x="0" y="-15" />
-            <use href="#rosePink" x="-65" y="10" />
-            <use href="#rosePink" x="65" y="10" />
-            <use href="#roseBlush" x="-38" y="-42" />
-            <use href="#roseBlush" x="38" y="-42" />
-            <use href="#roseRed" x="-90" y="48" />
-            <use href="#roseRed" x="90" y="48" />
-            <use href="#roseBlush" x="0" y="25" />
+            <use href="#roseRed" x="0" y="-15"/>
+            <use href="#rosePink" x="-65" y="10"/>
+            <use href="#rosePink" x="65" y="10"/>
+            <use href="#roseBlush" x="-38" y="-42"/>
+            <use href="#roseBlush" x="38" y="-42"/>
+            <use href="#roseRed" x="-90" y="48"/>
+            <use href="#roseRed" x="90" y="48"/>
+            <use href="#roseBlush" x="0" y="25"/>
           </g>
-
-          <!-- Wrapping paper & ribbon -->
           <path d="M130 320 L200 480 L270 320 Q240 300 200 310 Q160 300 130 320 Z" fill="url(#wrapGrad)" opacity="0.95"/>
           <path d="M130 320 Q165 340 200 310 Q235 340 270 320 Q240 370 200 480 Q160 370 130 320 Z" fill="url(#wrapGrad)" opacity="0.75"/>
-          <!-- Ribbon bow -->
           <path d="M200 320 C180 300 150 310 160 330 C170 350 200 330 200 320 Z" fill="url(#rgGold)"/>
           <path d="M200 320 C220 300 250 310 240 330 C230 350 200 330 200 320 Z" fill="url(#rgGold)"/>
           <circle cx="200" cy="323" r="10" fill="#b9174b"/>
@@ -587,162 +573,205 @@ img,svg{display:block;max-width:100%;height:auto}
 </div>
 
 <script>
-// PETALS RAIN
-const petalsBg = document.getElementById('petalsBg');
-const petalCount = window.innerWidth < 640 ? 12 : 22;
-for(let i=0; i<petalCount; i++){
-  const p = document.createElement('div');
-  p.className = 'petal';
-  p.style.left = `${Math.random()*100}vw`;
-  p.style.top = `${-20 - Math.random()*40}px`;
-  p.style.animationDuration = `${7 + Math.random()*8}s`;
-  p.style.animationDelay = `${Math.random()*8}s`;
-  p.style.setProperty('--drift', `${(Math.random()-.5)*140}px`);
-  p.style.transform = `scale(${.6 + Math.random()*.8})`;
-  petalsBg.appendChild(p);
-}
+(function(){
+  'use strict';
 
-// CURSOR TRAIL PETALS
-let lastX = 0, lastY = 0, throttle = 0;
-document.addEventListener('mousemove', (e) => {
-  const now = Date.now();
-  if(now - throttle < 90) return;
-  if(Math.hypot(e.clientX - lastX, e.clientY - lastY) < 45) return;
-  lastX = e.clientX; lastY = e.clientY; throttle = now;
+  var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var isTouch = window.matchMedia('(hover: none)').matches;
 
-  const cp = document.createElement('div');
-  cp.className = 'cursor-petal';
-  cp.style.left = `${e.clientX}px`;
-  cp.style.top = `${e.clientY}px`;
-  document.body.appendChild(cp);
-  setTimeout(() => cp.remove(), 1800);
-});
-
-// PROGRESS BAR
-window.addEventListener('scroll', () => {
-  const st = window.scrollY;
-  const dh = document.documentElement.scrollHeight - window.innerHeight;
-  document.getElementById('progressBar').style.width = `${(st / dh) * 100}%`;
-});
-
-// INTERSECTION OBSERVER FOR FADE-INS
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if(entry.isIntersecting){
-      entry.target.classList.add('in-view');
+  /* ===== PETALS RAIN ===== */
+  var petalsBg = document.getElementById('petalsBg');
+  if(petalsBg && !reducedMotion){
+    var petalCount = window.innerWidth < 640 ? 12 : 22;
+    for(var i = 0; i < petalCount; i++){
+      var p = document.createElement('div');
+      p.className = 'petal';
+      p.style.left = (Math.random() * 100) + 'vw';
+      p.style.animationDuration = (7 + Math.random() * 8) + 's';
+      p.style.animationDelay = (Math.random() * 8) + 's';
+      p.style.setProperty('--drift', ((Math.random() - 0.5) * 140) + 'px');
+      petalsBg.appendChild(p);
     }
-  });
-}, { threshold: 0.18 });
-
-document.querySelectorAll('.fade-in, .section-header, .bouquet-stage, .flower-card').forEach(el => observer.observe(el));
-
-// INTERACTIVE FLOWER GRID (8 FLOWERS)
-const flowerMessages = [
-  "Bông hoa thứ nhất: Cảm ơn Bé Heo vì đã luôn mang năng lượng tích cực và tiếng cười đến bên anh mỗi ngày.",
-  "Bông hoa thứ hai: Chúc cho đôi mắt em luôn lấp lánh niềm vui, không bao giờ phải buồn vì bất cứ điều gì.",
-  "Bông hoa thứ ba: Cảm ơn em vì cái nắm tay ấm áp khi coi phim mà em lấy hết can đảm để làm.",
-  "Bông hoa thứ tư: Mong rằng mọi ước mơ nhỏ xinh của em đều sẽ trở thành hiện thực đúng như em mong đợi.",
-  "Bông hoa thứ năm: Cảm ơn em vì đã kiên nhẫn và luôn dịu dàng với một đứa hay lo lắng như anh.",
-  "Bông hoa thứ sáu: Chúc Bé Heo của anh ngày càng xinh đẹp, rạng rỡ và lúc nào cũng tràn đầy sức sống.",
-  "Bông hoa thứ bảy: Cảm ơn vì định mệnh đã để anh gặp được con Heo dễ thương nhất trên đời này.",
-  "Bông hoa thứ tám: Và bông hoa cuối cùng... là lời hứa anh sẽ luôn ở bên, che chở và cưng chiều em cả đời."
-];
-
-const flowerGrid = document.getElementById('flowerGrid');
-const flowerPopup = document.getElementById('flowerPopup');
-const popupMsg = document.getElementById('popupMsg');
-const popupNumber = document.getElementById('popupNumber');
-const popupIcon = document.getElementById('popupIcon');
-const popupClose = document.getElementById('popupClose');
-
-flowerMessages.forEach((msg, idx) => {
-  const btn = document.createElement('button');
-  btn.className = 'click-flower';
-  btn.setAttribute('aria-label', `Bông hoa số ${idx+1}`);
-  btn.innerHTML = `
-    <svg viewBox="-50 -50 100 100">
-      <ellipse cx="0" cy="0" rx="36" ry="19" fill="${idx%2===0?'#e4356c':'#f48fb1'}"/>
-      <ellipse cx="0" cy="0" rx="36" ry="19" fill="${idx%3===0?'#b9174b':'#ec6a93'}" transform="rotate(72)"/>
-      <ellipse cx="0" cy="0" rx="36" ry="19" fill="${idx%2===0?'#8c1338':'#c2185b'}" transform="rotate(144)"/>
-      <ellipse cx="0" cy="0" rx="36" ry="19" fill="${idx%2===0?'#e4356c':'#f48fb1'}" transform="rotate(216)"/>
-      <ellipse cx="0" cy="0" rx="36" ry="19" fill="${idx%3===0?'#b9174b':'#ec6a93'}" transform="rotate(288)"/>
-      <circle cx="0" cy="0" r="10" fill="#e8d4a0"/>
-      <circle cx="0" cy="0" r="4" fill="#6b0f2a"/>
-    </svg>
-  `;
-
-  btn.addEventListener('click', (e) => {
-    btn.classList.add('bloomed');
-    popupNumber.textContent = `Bông hoa số ${idx + 1}`;
-    popupMsg.textContent = msg;
-    popupIcon.innerHTML = btn.innerHTML;
-    flowerPopup.classList.add('show');
-    flowerPopup.setAttribute('aria-hidden', 'false');
-
-    // Floating hearts on click
-    const rect = btn.getBoundingClientRect();
-    createFloatingHearts(rect.left + rect.width/2, rect.top + rect.height/2);
-  });
-
-  flowerGrid.appendChild(btn);
-});
-
-function closePopup(){
-  flowerPopup.classList.remove('show');
-  flowerPopup.setAttribute('aria-hidden', 'true');
-}
-
-popupClose.addEventListener('click', closePopup);
-flowerPopup.addEventListener('click', (e) => {
-  if(e.target === flowerPopup) closePopup();
-});
-document.addEventListener('keydown', (e) => {
-  if(e.key === 'Escape') closePopup();
-});
-
-// FLOATING HEARTS & FIREWORKS EFFECT
-function createFloatingHearts(x, y){
-  for(let i=0; i<8; i++){
-    const h = document.createElement('div');
-    h.className = 'heart-float';
-    h.innerHTML = '❤️';
-    h.style.left = `${x}px`;
-    h.style.top = `${y}px`;
-    const angle = (i / 8) * Math.PI * 2;
-    const dist = 60 + Math.random() * 80;
-    h.style.setProperty('--dx', `${Math.cos(angle) * dist}px`);
-    h.style.setProperty('--dy', `${Math.sin(angle) * dist - 50}px`);
-    h.style.fontSize = `${14 + Math.random()*12}px`;
-    document.body.appendChild(h);
-    setTimeout(() => h.remove(), 2500);
-  }
-}
-
-document.getElementById('finaleBtn').addEventListener('click', (e) => {
-  const rect = e.target.getBoundingClientRect();
-  const cx = rect.left + rect.width/2;
-  const cy = rect.top + rect.height/2;
-
-  // Massive fireworks & hearts burst
-  for(let i=0; i<36; i++){
-    const p = document.createElement('div');
-    p.className = 'fw-particle';
-    const colors = ['#e4356c', '#f8a5c2', '#c9a961', '#ff6b9d', '#ffffff'];
-    p.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-    p.style.left = `${cx}px`;
-    p.style.top = `${cy}px`;
-    const angle = Math.random() * Math.PI * 2;
-    const dist = 80 + Math.random() * 220;
-    p.style.setProperty('--tx', `${Math.cos(angle) * dist}px`);
-    p.style.setProperty('--ty', `${Math.sin(angle) * dist}px`);
-    document.body.appendChild(p);
-    setTimeout(() => p.remove(), 1500);
   }
 
-  createFloatingHearts(cx, cy);
-  setTimeout(() => createFloatingHearts(window.innerWidth/2, window.innerHeight/2), 300);
-  setTimeout(() => createFloatingHearts(window.innerWidth/3, window.innerHeight/3), 600);
-});
+  /* ===== CURSOR TRAIL PETALS ===== */
+  if(!isTouch && !reducedMotion){
+    var lastX = 0, lastY = 0, throttle = 0;
+    document.addEventListener('mousemove', function(e){
+      var now = Date.now();
+      if(now - throttle < 90) return;
+      if(Math.hypot(e.clientX - lastX, e.clientY - lastY) < 45) return;
+      lastX = e.clientX; lastY = e.clientY; throttle = now;
+
+      var cp = document.createElement('div');
+      cp.className = 'cursor-petal';
+      cp.style.left = e.clientX + 'px';
+      cp.style.top = e.clientY + 'px';
+      document.body.appendChild(cp);
+      setTimeout(function(){
+        if(cp.parentNode) cp.parentNode.removeChild(cp);
+      }, 1800);
+    }, { passive: true });
+  }
+
+  /* ===== PROGRESS BAR (FIX DIVIDE BY ZERO) ===== */
+  var progressBar = document.getElementById('progressBar');
+  var ticking = false;
+  window.addEventListener('scroll', function(){
+    if(ticking) return;
+    window.requestAnimationFrame(function(){
+      var st = window.pageYOffset || document.documentElement.scrollTop;
+      var dh = document.documentElement.scrollHeight - window.innerHeight;
+      if(dh > 0 && progressBar){
+        var pct = Math.min(100, Math.max(0, (st / dh) * 100));
+        progressBar.style.width = pct + '%';
+      }
+      ticking = false;
+    });
+    ticking = true;
+  }, { passive: true });
+
+  /* ===== INTERSECTION OBSERVER ===== */
+  if('IntersectionObserver' in window){
+    var observer = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          entry.target.classList.add('in-view');
+        }
+      });
+    }, { threshold: 0.18, rootMargin: '0px 0px -40px 0px' });
+
+    var els = document.querySelectorAll('.fade-in, .section-header, .bouquet-stage, .flower-card');
+    for(var k = 0; k < els.length; k++) observer.observe(els[k]);
+  } else {
+    // Fallback cho browser cổ: hiện hết
+    var fallback = document.querySelectorAll('.fade-in, .section-header, .bouquet-stage, .flower-card');
+    for(var kk = 0; kk < fallback.length; kk++) fallback[kk].classList.add('in-view');
+  }
+
+  /* ===== INTERACTIVE FLOWERS ===== */
+  var flowerMessages = [
+    "Bông hoa thứ nhất: Cảm ơn Bé Heo vì đã luôn mang năng lượng tích cực và tiếng cười đến bên anh mỗi ngày.",
+    "Bông hoa thứ hai: Chúc cho đôi mắt em luôn lấp lánh niềm vui, không bao giờ phải buồn vì bất cứ điều gì.",
+    "Bông hoa thứ ba: Cảm ơn em vì cái nắm tay ấm áp khi coi phim mà em lấy hết can đảm để làm.",
+    "Bông hoa thứ tư: Mong rằng mọi ước mơ nhỏ xinh của em đều sẽ trở thành hiện thực đúng như em mong đợi.",
+    "Bông hoa thứ năm: Cảm ơn em vì đã kiên nhẫn và luôn dịu dàng với một đứa hay lo lắng như anh.",
+    "Bông hoa thứ sáu: Chúc Bé Heo của anh ngày càng xinh đẹp, rạng rỡ và lúc nào cũng tràn đầy sức sống.",
+    "Bông hoa thứ bảy: Cảm ơn vì định mệnh đã để anh gặp được con Heo dễ thương nhất trên đời này.",
+    "Bông hoa thứ tám: Và bông hoa cuối cùng... là lời hứa anh sẽ luôn ở bên, che chở và cưng chiều em cả đời."
+  ];
+
+  var flowerGrid = document.getElementById('flowerGrid');
+  var flowerPopup = document.getElementById('flowerPopup');
+  var popupMsg = document.getElementById('popupMsg');
+  var popupNumber = document.getElementById('popupNumber');
+  var popupIcon = document.getElementById('popupIcon');
+  var popupClose = document.getElementById('popupClose');
+
+  if(flowerGrid){
+    flowerMessages.forEach(function(msg, idx){
+      var btn = document.createElement('button');
+      btn.className = 'click-flower';
+      btn.type = 'button';
+      btn.setAttribute('aria-label', 'Bông hoa số ' + (idx + 1));
+      btn.innerHTML =
+        '<svg viewBox="-50 -50 100 100" aria-hidden="true">' +
+          '<ellipse cx="0" cy="0" rx="36" ry="19" fill="' + (idx % 2 === 0 ? '#e4356c' : '#f48fb1') + '"/>' +
+          '<ellipse cx="0" cy="0" rx="36" ry="19" fill="' + (idx % 3 === 0 ? '#b9174b' : '#ec6a93') + '" transform="rotate(72)"/>' +
+          '<ellipse cx="0" cy="0" rx="36" ry="19" fill="' + (idx % 2 === 0 ? '#8c1338' : '#c2185b') + '" transform="rotate(144)"/>' +
+          '<ellipse cx="0" cy="0" rx="36" ry="19" fill="' + (idx % 2 === 0 ? '#e4356c' : '#f48fb1') + '" transform="rotate(216)"/>' +
+          '<ellipse cx="0" cy="0" rx="36" ry="19" fill="' + (idx % 3 === 0 ? '#b9174b' : '#ec6a93') + '" transform="rotate(288)"/>' +
+          '<circle cx="0" cy="0" r="10" fill="#e8d4a0"/>' +
+          '<circle cx="0" cy="0" r="4" fill="#6b0f2a"/>' +
+        '</svg>';
+
+      btn.addEventListener('click', function(){
+        btn.classList.add('bloomed');
+        popupNumber.textContent = 'Bông hoa số ' + (idx + 1);
+        popupMsg.textContent = msg;
+        popupIcon.innerHTML = btn.innerHTML;
+        flowerPopup.classList.add('show');
+        flowerPopup.setAttribute('aria-hidden', 'false');
+
+        var rect = btn.getBoundingClientRect();
+        createFloatingHearts(rect.left + rect.width / 2, rect.top + rect.height / 2);
+      });
+
+      flowerGrid.appendChild(btn);
+    });
+  }
+
+  function closePopup(){
+    if(!flowerPopup) return;
+    flowerPopup.classList.remove('show');
+    flowerPopup.setAttribute('aria-hidden', 'true');
+  }
+
+  if(popupClose) popupClose.addEventListener('click', closePopup);
+  if(flowerPopup){
+    flowerPopup.addEventListener('click', function(e){
+      if(e.target === flowerPopup) closePopup();
+    });
+  }
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape') closePopup();
+  });
+
+  /* ===== FLOATING HEARTS ===== */
+  function createFloatingHearts(x, y){
+    if(reducedMotion) return;
+    for(var i = 0; i < 8; i++){
+      var h = document.createElement('div');
+      h.className = 'heart-float';
+      h.textContent = '❤️';
+      h.style.left = x + 'px';
+      h.style.top = y + 'px';
+      var angle = (i / 8) * Math.PI * 2;
+      var dist = 60 + Math.random() * 80;
+      h.style.setProperty('--dx', (Math.cos(angle) * dist) + 'px');
+      h.style.setProperty('--dy', (Math.sin(angle) * dist - 50) + 'px');
+      h.style.fontSize = (14 + Math.random() * 12) + 'px';
+      document.body.appendChild(h);
+      (function(el){
+        setTimeout(function(){ if(el.parentNode) el.parentNode.removeChild(el); }, 2500);
+      })(h);
+    }
+  }
+
+  /* ===== FINALE BUTTON ===== */
+  var finaleBtn = document.getElementById('finaleBtn');
+  if(finaleBtn){
+    finaleBtn.addEventListener('click', function(e){
+      var rect = e.target.getBoundingClientRect();
+      var cx = rect.left + rect.width / 2;
+      var cy = rect.top + rect.height / 2;
+
+      // Fireworks burst
+      for(var i = 0; i < 36; i++){
+        var p = document.createElement('div');
+        p.className = 'fw-particle';
+        var colors = ['#e4356c', '#f8a5c2', '#c9a961', '#ff6b9d', '#ffffff'];
+        p.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        p.style.left = cx + 'px';
+        p.style.top = cy + 'px';
+        var angle = Math.random() * Math.PI * 2;
+        var dist = 80 + Math.random() * 220;
+        p.style.setProperty('--tx', (Math.cos(angle) * dist) + 'px');
+        p.style.setProperty('--ty', (Math.sin(angle) * dist) + 'px');
+        document.body.appendChild(p);
+        (function(el){
+          setTimeout(function(){ if(el.parentNode) el.parentNode.removeChild(el); }, 1500);
+        })(p);
+      }
+
+      // Hearts at 3 points
+      createFloatingHearts(cx, cy);
+      setTimeout(function(){ createFloatingHearts(window.innerWidth / 2, window.innerHeight / 2); }, 300);
+      setTimeout(function(){ createFloatingHearts(window.innerWidth / 3, window.innerHeight / 3); }, 600);
+    });
+  }
+
+})();
 </script>
 </body>
 </html>
